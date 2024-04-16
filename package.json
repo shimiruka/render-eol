@@ -1,0 +1,77 @@
+{
+  "name": "render-eol",
+  "displayName": "Render EOL",
+  "description": "render End of Line characters in active editor",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "type": "object",
+        "title": "Render EOL",
+        "properties": {
+          "render-eol.lfColor": {
+            "type": "string",
+            "default": "",
+            "description": "Change color for rendering LF. If blank, use same color as blank character set in editorWhitespace.foreground."
+          },
+          "render-eol.crColor": {
+            "type": "string",
+            "default": "",
+            "description": "Change color for rendering CR. If blank, use same color as blank character set in editorWhitespace.foreground."
+          },
+          "render-eol.crlfColor": {
+            "type": "string",
+            "default": "",
+            "description": "Change color for rendering CRLF. If blank, use same color as blank character set in editorWhitespace.foreground."
+          },
+          "render-eol.lfCharacter": {
+            "type": "string",
+            "default": "↓",
+            "description": "Change character used for rendering LF."
+          },
+          "render-eol.crCharacter": {
+            "type": "string",
+            "default": "←",
+            "description": "Change character used for rendering CR."
+          },
+          "render-eol.crlfCharacter": {
+            "type": "string",
+            "default": "↵",
+            "description": "Change character used for rendering CRLF."
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.77.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  }
+}
